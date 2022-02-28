@@ -7,11 +7,15 @@
 let getUserChoice = function (userInput) {
   userInput = userInput.toLowerCase();
 
-  if (userInput === "rock" || "paper" || "scissors") {
+  if (
+    userInput === "rock" ||
+    userInput === "paper" ||
+    userInput === "scissors" ||
+    userInput === "bomb"
+  ) {
     return userInput;
-  } 
-  if (userInput === "rock" || "paper" || "scissors"){
-    return(console.log(error));
+  } else {
+    console.log('Please enter a valid choice: "rock", "paper", or "scissors".');
   }
 };
 
@@ -25,46 +29,47 @@ function getComputerChoice() {
     return "scissors";
   }
 }
-// console.log(getComputerChoice());
 
 function determineWinner(userChoice, computerChoice) {
   if (userChoice === "bomb") {
-    return console.log(`WOW!!! Automatic WIN!`);
+    return `WOW!!! Automatic WIN!`;
   }
   if (userChoice === computerChoice) {
-    return console.log(`There was a tie!`);
+    return `There was a tie!`;
   }
   if (userChoice === "rock") {
     if (computerChoice === "paper") {
-      return console.log(`Sorry, you lost`);
+      return `Sorry, you lost`;
     }
     if (computerChoice === "scissors") {
-      return console.log(`Congrats! You won!`);
+      return `Congrats! You won!`;
     }
   }
   if (userChoice === "paper") {
     if (computerChoice === "scissors") {
-      return console.log(`Sorry, you lost`);
+      return `Sorry, you lost`;
     }
     if (computerChoice === "rock") {
-      return console.log(`Congrats! You won!`);
+      return `Congrats! You won!`;
     }
   }
   if (userChoice === "scissors") {
     if (computerChoice === "rock") {
-      return console.log(`Sorry, you lost`);
+      return `Sorry, you lost`;
     }
     if (computerChoice === "paper") {
-      return console.log(`Congrats! You won!`);
+      return `Congrats! You won!`;
     }
   }
 }
 
-function playGame() {
-  let userChoice = getUserChoice("paper");
+function playGame(userInput) {
+  let userChoice = getUserChoice(userInput);
   let computerChoice = getComputerChoice();
   console.log(`You chose ${userChoice} while computer chose ${computerChoice}`);
-  console.log(determineWinner(userChoice, computerChoice));
+  let results = determineWinner(userChoice, computerChoice);
+  console.log(results);
 }
 
-playGame();
+var userInput = prompt();
+playGame(userInput);
